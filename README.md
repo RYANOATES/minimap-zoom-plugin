@@ -22,22 +22,6 @@ The plugin applies the setting when enabled, when you change the percentage or c
 
 The plugin does not send game input, communicate with external services, or automate gameplay.
 
-## Local development
-
-This project uses Java 11 and the Gradle wrapper. Start a development client with:
-
-```powershell
-.\gradlew.bat run
-```
-
-Build and run the automated checks with:
-
-```powershell
-.\gradlew.bat build
-```
-
-For Jagex Accounts, follow RuneLite's [development-client login guide](https://github.com/runelite/runelite/wiki/Using-Jagex-Accounts).
-
 ## License
 
 This project is released under the [BSD 2-Clause License](LICENSE).
