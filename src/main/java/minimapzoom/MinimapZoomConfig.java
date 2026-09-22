@@ -3,32 +3,35 @@ package minimapzoom;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.Keybind;
-
-import java.awt.event.KeyEvent;
+import net.runelite.client.config.Range;
+import net.runelite.client.config.Units;
 
 @ConfigGroup("minimapzoom")
 public interface MinimapZoomConfig extends Config
 {
+    String GROUP = "minimapzoom";
     @net.runelite.client.config.ConfigItem(
             keyName = "zoomHotkey",
-            name = "Zoom Hotkey",
-            description = "Set the hotkey to maximize minimap zoom",
+		name = "Zoom hotkey",
+		description = "Hotkey that applies the configured minimap zoom level.",
             position = 1
     )
     default Keybind zoomHotkey()
     {
-        return new Keybind(KeyEvent.VK_Z, 0);
+		return Keybind.NOT_SET;
     }
 
     @SuppressWarnings("SameReturnValue")
     @net.runelite.client.config.ConfigItem(
             keyName = "zoomLevel",
-            name = "Zoom Level",
-            description = "Set the maximum zoom level for the minimap (higher = more zoomed)",
+		name = "Zoom level",
+		description = "Applied automatically after loading. 0-25% = furthest out, 50% = normal, 100% = closest in.",
             position = 2
     )
-    default double zoomLevel()
+    @Range(min = 0, max = 100)
+    @Units(Units.PERCENT)
+    default int zoomLevel()
     {
-        return 40.0;
+        return 50;
     }
 }
